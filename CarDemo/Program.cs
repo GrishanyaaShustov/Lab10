@@ -72,6 +72,8 @@ namespace Car
                                 deliveryCar.Show();
                             }
                         }
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
                     case "2":
@@ -81,6 +83,8 @@ namespace Car
                             car.Show(); // Вызов виртуального метода Show()
                             Console.WriteLine();
                         }
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
                     case "3":
@@ -94,12 +98,16 @@ namespace Car
                         {
                             Console.WriteLine("Внедорожники отсутствуют.");
                         }
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
                     case "4":
                         Console.WriteLine("\n=== Средняя скорость легковых автомобилей ===");
                         double averageSpeed = Car.GetAverageSpeedOfLightCars(cars);
                         Console.WriteLine($"Средняя скорость: {averageSpeed:F2} км/ч");
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
                         break;
                     case "5":
                         Console.WriteLine("\n=== Грузовики с грузоподъемностью превышающей 17 тон ===");
@@ -108,6 +116,8 @@ namespace Car
                         {
                             truck.Show();
                         }
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
                     case "6":
@@ -189,6 +199,10 @@ namespace Car
                         Console.WriteLine($"Внедорожников - {bigCarCount}");
                         Console.WriteLine($"Грузовых - {deliveryCarCount}");
                         Console.WriteLine($"Часов - {dialClockCount}");
+                        
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
+                        
                         break;
 
                     case "7":
@@ -201,6 +215,9 @@ namespace Car
                         {
                             car.Show();
                         }
+                        
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
 
@@ -214,6 +231,9 @@ namespace Car
                         {
                             car.Show();
                         }
+                        
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
 
                         break;
 
@@ -232,10 +252,14 @@ namespace Car
                         {
                             Console.WriteLine($"\nАвтомобиль найден на позиции {index}:");
                             cars[index].Show();
+                            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                            Console.ReadKey();
                         }
                         else
                         {
                             Console.WriteLine("\nАвтомобиль не найден.");
+                            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                            Console.ReadKey();
                         }
 
                         break;

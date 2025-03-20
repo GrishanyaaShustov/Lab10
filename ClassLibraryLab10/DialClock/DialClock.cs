@@ -77,7 +77,7 @@ public class DialClock : IInit
         {
             return $"{Hours:D2}:{Minutes:D2}";
         }
-        
+            
         // Метод для вычисления угла между стрелками
         public double GetAngleBetweenHands()
         {
