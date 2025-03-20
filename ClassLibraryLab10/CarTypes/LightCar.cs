@@ -73,9 +73,7 @@
         
         public override object Clone()
         {
-            // Вызываем метод Clone базового класса
             LightCar clonedCar = (LightCar)base.Clone();
-            
             clonedCar.seatCount = this.seatCount;
             clonedCar.maxSpeed = this.maxSpeed;
 

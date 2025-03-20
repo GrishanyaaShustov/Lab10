@@ -55,8 +55,6 @@
         {
             // Вызываем метод Clone базового класса
             DeliveryCar clonedCar = (DeliveryCar)base.Clone();
-
-            // Копируем специфические поля
             clonedCar.loadCapacity = this.loadCapacity;
 
             return clonedCar;

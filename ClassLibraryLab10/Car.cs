@@ -111,19 +111,9 @@
         {
             Car clonedCar = (Car)this.MemberwiseClone();
             
-            if (this.Brand != null)
-            {
-                clonedCar.Brand = string.Copy(this.Brand);
-            }
-            if (this.Color != null)
-            {
-                clonedCar.Color = string.Copy(this.Color);
-            }
-            
-            if (this.CarId != null)
-            {
-                clonedCar.CarId = new IdNumber(this.CarId.Number);
-            }
+            clonedCar.Brand = string.Copy(this.Brand);
+            clonedCar.Color = string.Copy(this.Color);
+            clonedCar.CarId = new IdNumber(this.CarId.Number);
 
             return clonedCar;
         }
