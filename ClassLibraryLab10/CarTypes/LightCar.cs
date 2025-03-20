@@ -80,7 +80,7 @@
             return clonedCar;
         }
 
-        public new LightCar ShallowCopy()
+        public override LightCar ShallowCopy()
         {
             return (LightCar)this.MemberwiseClone();
         }

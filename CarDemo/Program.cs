@@ -35,7 +35,7 @@ namespace Car
 
             while (true)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine("Меню:");
                 Console.WriteLine("1. Просмотр через обычные функции");
                 Console.WriteLine("2. Просмотр через виртуальные функции");
@@ -114,8 +114,8 @@ namespace Car
                         Console.ReadKey();
                         break;
                     case "5":
-                        Console.WriteLine("\n=== Грузовики с грузоподъемностью превышающей 17 тон ===");
-                        var heavyTrucks = Car.GetTrucksWithLoadCapacityAbove(cars, 17);
+                        Console.WriteLine("\n=== Грузовики с грузоподъемностью превышающей 9 тон ===");
+                        var heavyTrucks = Car.GetTrucksWithLoadCapacityAbove(cars, 9);
                         foreach (var truck in heavyTrucks)
                         {
                             truck.Show();

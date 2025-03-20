@@ -55,12 +55,13 @@
         {
             // Вызываем метод Clone базового класса
             DeliveryCar clonedCar = (DeliveryCar)base.Clone();
+            
             clonedCar.loadCapacity = this.loadCapacity;
 
             return clonedCar;
         }
 
-        public new DeliveryCar ShallowCopy()
+        public override DeliveryCar ShallowCopy()
         {
             return (DeliveryCar)this.MemberwiseClone();
         }

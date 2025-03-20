@@ -60,7 +60,7 @@
             return clonedCar;
         }
 
-        public new BigCar ShallowCopy()
+        public override BigCar ShallowCopy()
         {
             return (BigCar)this.MemberwiseClone();
         }
