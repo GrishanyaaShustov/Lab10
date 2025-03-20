@@ -158,9 +158,10 @@
 
             foreach (var car in cars)
             {
-                if (car is BigCar bigCar)
+                if (car.GetType() == typeof(BigCar)) // Используем typeof
                 {
-                    if (mostExpensive == null || bigCar.Price > mostExpensive.Price)
+                    BigCar bigCar = car as BigCar; // Используем as
+                    if (mostExpensive == null || (bigCar != null && bigCar.Price > mostExpensive.Price))
                     {
                         mostExpensive = bigCar;
                     }
@@ -168,47 +169,58 @@
             }
             return mostExpensive;
         }
-        
+
         public static double GetAverageSpeedOfLightCars(Car[] cars)
         {
             int totalSpeed = 0;
             int count = 0;
-    
+
             foreach (var car in cars)
             {
-                if (car is LightCar lightCar)
+                if (car is LightCar) // Используем is
                 {
-                    totalSpeed += lightCar.MaxSpeed;
-                    count++;
+                    LightCar lightCar = car as LightCar; // Используем as
+                    if (lightCar != null && lightCar.GetType() == typeof(LightCar)) // Проверяем typeof
+                    {
+                        totalSpeed += lightCar.MaxSpeed;
+                        count++;
+                    }
                 }
             }
-    
+
             return count > 0 ? (double)totalSpeed / count : 0;
-        }
-        
+    }
+
         public static DeliveryCar[] GetTrucksWithLoadCapacityAbove(Car[] cars, double loadThreshold)
         {
             int count = 0;
             foreach (var car in cars)
             {
-                if (car is DeliveryCar deliveryCar && deliveryCar.LoadCapacity > loadThreshold)
+                if (car is DeliveryCar) // Используем is
                 {
-                    count++;
+                    DeliveryCar deliveryCar = car as DeliveryCar; // Используем as
+                    if (deliveryCar != null && deliveryCar.GetType() == typeof(DeliveryCar) && deliveryCar.LoadCapacity > loadThreshold) // Проверяем typeof
+                    {
+                        count++;
+                    }
                 }
             }
-            
-            DeliveryCar[] trucks = new DeliveryCar[count];
+
+            DeliveryCar[] result = new DeliveryCar[count];
             int index = 0;
-            
             foreach (var car in cars)
             {
-                if (car is DeliveryCar deliveryCar && deliveryCar.LoadCapacity > loadThreshold)
+                if (car is DeliveryCar) // Используем is
                 {
-                    trucks[index++] = deliveryCar;
+                    DeliveryCar deliveryCar = car as DeliveryCar; // Используем as
+                    if (deliveryCar != null && deliveryCar.GetType() == typeof(DeliveryCar) && deliveryCar.LoadCapacity > loadThreshold) // Проверяем typeof
+                    {
+                        result[index++] = deliveryCar;
+                    }
                 }
             }
-    
-            return trucks;
+
+            return result;
         }
         
         public override bool Equals(object obj)

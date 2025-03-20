@@ -47,6 +47,7 @@ namespace Car
                 Console.WriteLine("8. Сортировка машин по годам");
                 Console.WriteLine("9. Бинарный поиск");
                 Console.WriteLine("10. Разница между поверхностным и глубоким копированием");
+                Console.WriteLine("11. Бинарный поиск(2 критерий)");
                 Console.Write("Выберите: ");
                 string choice = Console.ReadLine();
 
@@ -72,6 +73,7 @@ namespace Car
                                 deliveryCar.Show();
                             }
                         }
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -83,6 +85,7 @@ namespace Car
                             car.Show(); // Вызов виртуального метода Show()
                             Console.WriteLine();
                         }
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -98,6 +101,7 @@ namespace Car
                         {
                             Console.WriteLine("Внедорожники отсутствуют.");
                         }
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -116,6 +120,7 @@ namespace Car
                         {
                             truck.Show();
                         }
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -199,10 +204,10 @@ namespace Car
                         Console.WriteLine($"Внедорожников - {bigCarCount}");
                         Console.WriteLine($"Грузовых - {deliveryCarCount}");
                         Console.WriteLine($"Часов - {dialClockCount}");
-                        
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
-                        
+
                         break;
 
                     case "7":
@@ -215,7 +220,7 @@ namespace Car
                         {
                             car.Show();
                         }
-                        
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -231,7 +236,7 @@ namespace Car
                         {
                             car.Show();
                         }
-                        
+
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
 
@@ -242,24 +247,31 @@ namespace Car
                         Array.Sort(cars);
 
                         Console.WriteLine("\nВведите стоимость автомобиля для поиска:");
-                        decimal searchPrice = decimal.Parse(Console.ReadLine());
-
-                        Car searchCar = new Car { Price = searchPrice };
-
-                        int index = Array.BinarySearch(cars, searchCar);
-
-                        if (index >= 0)
+                        if (decimal.TryParse(Console.ReadLine(), out decimal searchPrice))
                         {
-                            Console.WriteLine($"\nАвтомобиль найден на позиции {index}:");
-                            cars[index].Show();
-                            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-                            Console.ReadKey();
+                            Car searchCar = new Car { Price = searchPrice };
+
+                            int index = Array.BinarySearch(cars, searchCar);
+
+                            if (index >= 0)
+                            {
+                                Console.WriteLine($"\nАвтомобиль найден на позиции {index}:");
+                                cars[index].Show();
+                                Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nАвтомобиль не найден.");
+                                Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                                Console.ReadKey();
+                            }
                         }
                         else
                         {
+                            Console.WriteLine("Некорректный ввод стоимости.");
                             Console.WriteLine("\nАвтомобиль не найден.");
                             Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-                            Console.ReadKey();
                         }
 
                         break;
@@ -282,7 +294,7 @@ namespace Car
                         Car shallowCopy = originalCar.ShallowCopy();
                         shallowCopy.Brand = "Honda";
                         shallowCopy.CarId.Number = 67890;
-                        
+
 
                         Console.WriteLine("\n=== После изменения поверхностной копии ===");
                         Console.WriteLine("Исходный объект:");
@@ -307,6 +319,36 @@ namespace Car
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
                         break;
+
+                    case "11":
+                        Array.Sort(cars, new CarYearComparer()); // Сортируем по году выпуска
+
+                        Console.WriteLine("\nВведите год автомобиля для поиска:");
+                        if (int.TryParse(Console.ReadLine(), out int searchYear))
+                        {
+                            Car searchCar = new Car { Year = searchYear };
+
+                            int index = Array.BinarySearch(cars, searchCar, new CarYearComparer());
+
+                            if (index >= 0)
+                            {
+                                Console.WriteLine($"\nАвтомобиль найден на позиции {index}:");
+                                cars[index].Show();
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nАвтомобиль не найден.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Некорректный ввод года.");
+                        }
+
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
+                        break;
+
                 }
             }
         }
