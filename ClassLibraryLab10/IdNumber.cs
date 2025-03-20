@@ -22,4 +22,14 @@
     {
         return $"ID: {Number}";
     }
+    
+    public override bool Equals(object obj)
+    {
+        if (obj is IdNumber other)
+        {
+            return Number == other.Number;
+        }
+
+        return false;
+    }
 }
